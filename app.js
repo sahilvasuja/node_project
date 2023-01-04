@@ -1,21 +1,22 @@
-const express = require("express");
-const app = express();
-const port = 3000;
-const path = require("path");
-// console.log(__dirname,"../public")
-// const staticPath=path.join(__dirname,'../public');
-// console.log(staticPath)
-//  app.use(express.static(staticPath));
- app.use(express.static('public'));
- app.get("/about", (req, res) => {
-  res.setHeader('Content-Type', 'application/json');
-    res.send("About");
-  });
-app.get("/", (req, res) => {
-  res.setHeader('Content-Type', 'text/html');
-    res.send("Hlo");
-    //   res.sendFile(__dirname + "/public/Home.html");
-  });
+var express = require('express');
+var app = express();
+const port=3000;
+
+app.get('/',function(req,res){
+    res.send( ` <h1>Good Afternoon</h1><a href="/hello">Go to Hello Page</a> `);
+})
+
+app.get('/hello', function(req, res){
+   res.send(`
+   <h1>Hello World!</h1> <a href="/about">Go to About Page</a>
+   `
+   );
+});
+app.get('/about',function(req,res){
+    res.send(`<h2>About Page</h2>
+    <a href="/">Go to Home Page</a>
+    `)
+})
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
