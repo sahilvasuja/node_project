@@ -19,7 +19,7 @@ app.get('/show', (req, res) => {
   
   });
 });
-app.get('/products', (req, res) => {
+app.get('/product', (req, res) => {
   fs.readFile('database.json', (err, data) => {
     if (err) {
       res.status(500).send('Error reading file');
