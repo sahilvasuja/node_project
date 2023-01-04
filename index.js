@@ -4,8 +4,18 @@ const app = express();
 const port=3000;
 app.use(express.json());
 app.get("/",(req,res)=>{
- res.send(`<h1>Hello</h1> <a href='/show'>Go to show page</a>`)
+ res.send('<h1>Hello</h1>')
 })
+app.get('/products', (req, res) => {
+    fs.readFile('database.json', (err, data) => {
+      if (err) {
+        res.status(500).send('Error reading file');
+      } else {
+        const db = JSON.parse(data);
+        res.send(db.products);
+      }
+    });
+  });
 app.get('/show', (req, res) => {
   fs.readFile('database.json', (err, data) => {
     if (err) throw err;
