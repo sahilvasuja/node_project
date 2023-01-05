@@ -8,13 +8,12 @@ app.use(express.urlencoded({ extended: true }));
 app.get('/', (req, res) => {
   res.render('index');
 });
-
 app.post('/add-todo', (req, res) => {
     const todo = req.body.todo;
-    console.log("todo",todo);
+    console.log("todo 13",todo);
     fs.readFile('database.json', (err, data) => {
       if (err) throw err;
-  
+      console.log("todo 16",todo);
       let jsonData = JSON.parse(data);
       jsonData.push(todo);
   
