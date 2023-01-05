@@ -1,0 +1,33 @@
+h1{
+  text-align: center;
+  font-size: 2rem;
+  color: #f44336;
+}
+  .form {
+    width: 500px;
+    background-color: #eee;
+    border-radius: 6px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+}
+.input {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  flex: 1;
+}
+.input:focus , .add:focus{
+  outline: none;
+}
+.add {
+  border: none;
+  background-color: #f44336;
+  color: white;
+  padding: 10px;
+  border-radius: 6px;
+  margin-left: 10px;
+  cursor: pointer;
+}
