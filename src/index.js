@@ -2,12 +2,13 @@ const fs = require('fs');
 const express = require('express');
 const app = express();
 const port=3005;
+app.use(express.static('public'));
 const bodyParser = require('body-parser');
 // parse application/json
 app.use(bodyParser.json());
 app.use(express.json());
 app.get("/",(req,res)=>{
- res.send('<h1>Hello</h1>')
+ res.send(`<h1>Hello</h1> <a href='/products'>Go to product page</a>`)
 })
 app.get('/products', (req, res) => {
     fs.readFile('database.json', (err, data) => {
