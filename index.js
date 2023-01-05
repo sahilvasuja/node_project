@@ -1,12 +1,8 @@
 const fs = require('fs');
 const express = require('express');
 const app = express();
-<<<<<<< HEAD
 const port=3005;
 app.use(express.static('public'));
-=======
-const port=4005;
->>>>>>> 28153bdd474cba33af66e1122d31a501e16d42fd
 const bodyParser = require('body-parser');
 // parse application/json
 app.use(bodyParser.json());
