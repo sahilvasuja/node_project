@@ -1,7 +1,7 @@
 const fs = require('fs');
 const express = require('express');
 const app = express();
-const port=3005;
+const port=4005;
 const bodyParser = require('body-parser');
 // parse application/json
 app.use(bodyParser.json());
@@ -11,6 +11,7 @@ app.get("/",(req,res)=>{
 })
 app.get('/products', (req, res) => {
     fs.readFile('database.json', (err, data) => {
+     
       if (err) {
         res.status(500).send('Error reading file');
       } else {

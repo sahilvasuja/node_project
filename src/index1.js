@@ -1,5 +1,5 @@
 const fs = require('fs');
-
+ 
 const data = { x: 5 };
 // create
 fs.writeFile('store.json', JSON.stringify(data), (err) => {
