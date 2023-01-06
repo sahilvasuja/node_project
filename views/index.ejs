@@ -11,7 +11,34 @@
     <h1>Todo App</h1>
     <form action="/add-todo" method="post" class="form">
       <input type="text" name="todo" placeholder="Add a todo" class="input">
-      <button type="submit" class="add">Add Todo</button>
+      <button type="submit" class="button">Add Todo</button>
     </form>
+    <div class="app-container"> 
+      <h1 style="margin: 0px;">Todo Items</h1>
+      <ul class="task-list" id="todo-list">
+        <% todo.forEach((todos,i)=>{%>
+      <li class="task-list-item" v-for="task in tasks">
+        <label class="task-list-item-label">
+          <input type="checkbox" class="checkbox">
+          <span name="check" class="my-text"><%=todos%></span>
+        </label>
+        <!-- <button class="edit-btn" onclick="console.log(`edit`);">Edit</button> -->
+        <a class="delete-btn" href="/delete-todo/<%=i%>" >X</a>
+      </li>
+      <%})%>
+    </ul>
+  </div>
+  <script>
+    const checkbox = document.getElementsByClassName('checkbox');
+    const text = document.querySelector('.my-text');
+    checkbox.addEventListener('click', () => {
+       if (checkbox.checked) {
+        text.style.textDecoration = 'line-through';
+      } else {
+        text.style.textDecoration = 'none';
+      }
+});
+  </script>
 </body>
+
 </html>

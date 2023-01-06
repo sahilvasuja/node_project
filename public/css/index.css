@@ -14,7 +14,7 @@ h1{
     margin: auto;
 }
 .input {
-  padding: 10px;
+  padding: 12px;
   border: 1px solid #ddd;
   border-radius: 6px;
   flex: 1;
@@ -22,7 +22,7 @@ h1{
 .input:focus , .add:focus{
   outline: none;
 }
-.add {
+.button {
   border: none;
   background-color: #f44336;
   color: white;
@@ -32,3 +32,67 @@ h1{
   cursor: pointer;
   border-radius: 2rem;
 }
+ul {
+  list-style: none;
+  padding: 0;
+}
+.app-container {
+  border-radius: 5px;
+  width: 100%;
+  max-width: 500px;
+  background-color: #e5e5ee;
+  padding: 15px;
+  margin: auto;
+  margin-top: 2rem;
+}
+.task-list-item {
+  background-color: #191933;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3px;
+  margin-top: 1rem;
+}
+.edit-btn{
+  display: block;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 4px;
+}
+.delete-btn {
+  margin-left: auto;
+  display: block;
+  color: red;
+  font-size: 1.5rem;
+  cursor: pointer;
+  text-decoration: none;
+  padding: 2rem;
+}
+.hidden_real_check{
+  width: 100%;
+	height: 100%;
+	opacity:0;
+	position: absolute;
+}
+span{
+  font-size: 1.5rem;
+  margin-left: 10rem;
+  color: white;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+}
+.checkbox:checked + .my-text {
+  text-decoration: line-through;
+  text-decoration-thickness:4px;
+  text-decoration-color: red;
+}
+
+
+
+
+
