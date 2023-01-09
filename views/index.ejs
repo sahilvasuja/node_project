@@ -16,28 +16,28 @@
     <div class="app-container"> 
       <h1 style="margin: 0px;">Todo Items</h1>
       <ul class="task-list" id="todo-list">
-        <% todo.forEach((todos,i)=>{%>
+        <% todoValue.forEach((todos,i)=>{%>
       <li class="task-list-item" v-for="task in tasks">
         <label class="task-list-item-label">
-          <input type="checkbox" class="checkbox">
-          <span name="check" class="my-text"><%=todos%></span>
+          <input type="checkbox"  class="checkbox" onchange="check(`<%= i %>`)" <%= todos.isCompleted? "checked" : "" %> >
+          <span name="check" class="my-text" id=<%=todos.id%>><%=todos.task%></span>
         </label>
-        <!-- <button class="edit-btn" onclick="console.log(`edit`);">Edit</button> -->
-        <a class="delete-btn" href="/delete-todo/<%=i%>" >X</a>
+        <a class="edit-btn" href="/update-todo/<%=i%>">Edit</a>
+        <!-- <a class="edit-btn" href="/update-todo/<%=i%>" onchange="edit(`<%=i%>`)" <%=todos.isUpdated? "edit":"save" %>Edit</a>Edit -->
+        <a class="delete-btn" href="/delete-todo/<%=i%>">X</a>
       </li>
       <%})%>
     </ul>
   </div>
   <script>
-    const checkbox = document.getElementsByClassName('checkbox');
-    const text = document.querySelector('.my-text');
-    checkbox.addEventListener('click', () => {
-       if (checkbox.checked) {
-        text.style.textDecoration = 'line-through';
-      } else {
-        text.style.textDecoration = 'none';
-      }
-});
+    function edit(index){
+      console.log('update');
+      window.location.href= `/edit/${index}`
+    }
+function check(index) {
+      console.log("check")
+    window.location.href= `/check/${index}`
+}
   </script>
 </body>
 

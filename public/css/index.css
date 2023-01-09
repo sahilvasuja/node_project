@@ -5,7 +5,7 @@ h1{
 }
   .form {
     width: 500px;
-    background-color: #eee;
+    background-color: #191933;
     border-radius: 6px;
     padding: 20px;
     display: flex;
@@ -27,10 +27,9 @@ h1{
   background-color: #f44336;
   color: white;
   padding: 10px;
-  border-radius: 6px;
   margin-left: 10px;
   cursor: pointer;
-  border-radius: 2rem;
+  border-radius: 1rem;
 }
 ul {
   list-style: none;
@@ -40,13 +39,12 @@ ul {
   border-radius: 5px;
   width: 100%;
   max-width: 500px;
-  background-color: #e5e5ee;
+  background-color: #191933;
   padding: 15px;
   margin: auto;
   margin-top: 2rem;
 }
 .task-list-item {
-  background-color: #191933;
   border-radius: 4px;
   display: flex;
   justify-content: center;
@@ -54,27 +52,31 @@ ul {
   padding: 3px;
   margin-top: 1rem;
 }
-.edit-btn{
-  display: block;
+/* .edit-btn{
   font-size: 1rem;
   cursor: pointer;
   padding: 4px;
-}
+  background-color: #ddd;
+  margin-left: auto;
+  display: block;
+} */
 .delete-btn {
   margin-left: auto;
   display: block;
   color: red;
   font-size: 1.5rem;
   cursor: pointer;
+  background-color: white;
+  padding: 5px;
+  border-radius: 2px;
   text-decoration: none;
-  padding: 2rem;
 }
-.hidden_real_check{
+/* .hidden_real_check{
   width: 100%;
 	height: 100%;
 	opacity:0;
 	position: absolute;
-}
+} */
 span{
   font-size: 1.5rem;
   margin-left: 10rem;
