@@ -9,10 +9,18 @@
 </head>
 <body>
     <h1>Todo App</h1>
-    <form action="/add-todo" method="post" class="form">
-      <input type="text" name="todo" placeholder="Add a todo" class="input">
-      <button type="submit" class="button">Add Todo</button>
+    <!-- form-1 in which add todo -->
+    <form action="/add-todo" method="post" class="form" id="form-one">
+      <input type="text" name="todos" placeholder="Add a todo" class="input" id="input-text">
+      <button type="submit" class="button" id="add-todo">Add Todo</button>
     </form>
+    <!-- form-2 in which save todo   -->
+    <form action="/update-todo" method="post" class="form" id="form-two">
+      <input type="text" name="todos" placeholder="Add a todo" class="input" id="input-edit">
+      <input type="hidden" name="index" id="hidden-input" />
+      <button type="submit" class="button" id="save-todo">Save Todo</button>
+    </form>
+    <!-- display list -->
     <div class="app-container"> 
       <h1 style="margin: 0px;">Todo Items</h1>
       <ul class="task-list" id="todo-list">
@@ -22,22 +30,30 @@
           <input type="checkbox"  class="checkbox" onchange="check(`<%= i %>`)" <%= todos.isCompleted? "checked" : "" %> >
           <span name="check" class="my-text" id=<%=todos.id%>><%=todos.task%></span>
         </label>
-        <a class="edit-btn" href="/update-todo/<%=i%>">Edit</a>
-        <!-- <a class="edit-btn" href="/update-todo/<%=i%>" onchange="edit(`<%=i%>`)" <%=todos.isUpdated? "edit":"save" %>Edit</a>Edit -->
+        <button class="edit-btn" onclick="edit(`<%= i %>` , `<%= todos.task %>`)" id="edit">EDIT</button>
         <a class="delete-btn" href="/delete-todo/<%=i%>">X</a>
       </li>
       <%})%>
     </ul>
   </div>
   <script>
-    function edit(index){
-      console.log('update');
-      window.location.href= `/edit/${index}`
-    }
+    // check functionality
 function check(index) {
       console.log("check")
     window.location.href= `/check/${index}`
 }
+// edit functionality
+function edit(index, todos){
+    console.log("first", index, todos)
+    const formOne=document.getElementById("form-one")
+    formOne.style.display="none"
+    const formTwo=document.getElementById("form-two");
+    formTwo.style.display="flex"
+    document.getElementById("input-edit").value=todos;
+    const hiddeninput=document.getElementById("hidden-input")
+    hiddeninput.value=index
+}
+
   </script>
 </body>
 

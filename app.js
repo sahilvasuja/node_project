@@ -15,7 +15,7 @@ app.get('/', (req, res) => {
 });
 // add-todo
 app.post('/add-todo', (req, res) => {
-    const result = req.body.todo;
+    const result = req.body.todos;
     console.log("19",result);
     fs.readFile('database.json', (err, data) => {
       if (err) throw err;
@@ -32,19 +32,35 @@ app.post('/add-todo', (req, res) => {
         if (err) throw err;
         console.log('Todo added');
         res.render('index',{todoValue:jsonData});
-        console.log("34",jsonData);
+        console.log("35",jsonData);
       });
     });
   });
+  // update 
+ app.post('/update-todo',(req,res)=>{
+  const result=req.body;
+  console.log(result,"42");
+  fs.readFile("database.json",(err,data)=>{
+    if(err) throw err;
+    console.log(result,"45");
+    let jsonData=JSON.parse(data);
+    console.log(jsonData,"47");
+    jsonData[result.index].task=result.todos;
+    fs.writeFile('database.json',JSON.stringify(jsonData),(err)=>{
+      if(err) throw err;
+      res.redirect('/');
+    });
+  });
+ });
   // check
   app.get("/check/:id", async (req, res) => {
     const id = req.params.id;
-    console.log(id,"41")
+    console.log(id,"58")
     fs.readFile("database.json", (err, data) => {
       if (err) throw err;
       const jsonData = JSON.parse(data);
       jsonData[id].isCompleted=!jsonData[id].isCompleted
-      console.log("47",jsonData);
+      console.log("63",jsonData);
       fs.writeFile("database.json", JSON.stringify(jsonData), (err) => {
         if (err) throw err;
         console.log("checked");
@@ -52,30 +68,10 @@ app.post('/add-todo', (req, res) => {
     });
     res.redirect("/");
   });
-  // update
-  // app.get("/update-todo/:id", (req, res) => {
-  //   const id = req.params.id;
-  //   console.log(id, "58");
-  //   fs.readFile("database.json", (err, data) => {
-  //     if (err) throw err;
-  //     // const result = req.body.todo;
-  //      const jsonData = JSON.parse(data);
-  //     const todo = jsonData.find(todo => todo.id === id);
-  //     //  const todoId = todo.id;
-  //      console.log(`The ID of the todo is ${todoId}`);
-  //     fs.writeFile("database.json", JSON.stringify(jsonData), (err) => {
-  //       if (err) throw err;
-  //       const todoId=req.params.id;
-  //       console.log("76",todoId);
-  //       console.log("Data updated");
-  //     });
-  //   });
-  //   res.redirect("/");
-  // });
 // delete
   app.get('/delete-todo/:id',async(req,res)=>{
     const id=req.params.id;
-    console.log("59",id);
+    console.log("74",id);
     fs.readFile('database.json',(err,data)=>{
       if(err)
       throw err;
@@ -84,7 +80,7 @@ app.post('/add-todo', (req, res) => {
       fs.writeFile('database.json', JSON.stringify(jsonData), (err) => {
         if (err) throw err;
         console.log('Data written to file');
-        console.log("68",jsonData)
+        console.log("83",jsonData)
       });
     });
     console.log("Todo is deleted Successfully!");
